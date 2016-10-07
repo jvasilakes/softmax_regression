@@ -1,4 +1,5 @@
 Multinomial / Softmax Regression
+
 Requirements: Python2 and NumPy.
 
 Usage: python2 run.py [-h] [-e n] [-i n] [-l n] trainfile testfile

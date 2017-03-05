@@ -1,10 +1,8 @@
 from __future__ import division, print_function
 
 import sys
-try:
-    import numpy as np
-except:
-    sys.exit('Numpy required')
+import numpy as np
+import scipy.stats as stats
 
 from collections import Counter
 from argparse import ArgumentParser
@@ -24,7 +22,8 @@ class GradientDescentTrainer(object):
     def __init__(self, train_x, train_y, l2=1, eta=0.1):
         self.x = train_x
         self.y = train_y
-        self.w = np.zeros([self.y.shape[1], self.x.shape[1]])  # classes x features
+        self.w = stats.truncnorm.rvs(0, 0.2, size=(self.y.shape[1], self.x.shape[1]))
+#        self.w = np.zeros([self.y.shape[1], self.x.shape[1]])  # classes x features
         self.l2 = l2   # L2 regularization parameter
         self.eta = eta  # Step size
         self._x_by_class = None  # Features set to non-zero for each given class
